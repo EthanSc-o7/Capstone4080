@@ -5,27 +5,47 @@ require 'gosu'
     super 640,480
     self.caption = "Tutorial Game"
     @background_image = Gosu::Image.new("media/space.png", :tileable =>true)
-    @player = Player.new
-    @player.warp(320,240)
+    @player = Player.new(1)
+    @player.warp(480,240)
+
+    @player2 = Player.new(2)
+    @player2.warp(160,240)
   end 
 
   def update 
-    if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
-      @player.turn_left
-    end
+    if @player.getID == 1
+      if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
+        @player.turn_left
+      end
 
-    if Gosu.button_down? Gosu::KB_RIGHT or Gosu::button_down? Gosu::GP_RIGHT
-      @player.turn_right
-    end
+      if Gosu.button_down? Gosu::KB_RIGHT or Gosu::button_down? Gosu::GP_RIGHT
+        @player.turn_right
+      end
 
-    if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_BUTTON_0
-      @player.accelereate
-    end
-    @player.move
+      if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_BUTTON_0
+        @player.accelereate
+      end
+      @player.move
     
+    end
+    if @player2.getID == 2
+    if Gosu.button_down? Gosu::KB_A or Gosu::button_down? Gosu::GP_LEFT
+      @player2.turn_left
+    end
+
+    if Gosu.button_down? Gosu::KB_D or Gosu::button_down? Gosu::GP_RIGHT
+      @player2.turn_right
+    end
+
+    if Gosu.button_down? Gosu::KB_W or Gosu::button_down? Gosu::GP_BUTTON_0
+      @player2.accelereate
+    end
+    @player2.move
+  end
   end 
 
   def draw 
+    @player2.draw
     @player.draw
     @background_image.draw(0,0,0)
   end 
@@ -40,10 +60,11 @@ require 'gosu'
 end 
 
 class Player 
-  def initialize
+  def initialize(id)
     @image = Gosu::Image.new("media/starfighter.bmp")
     @x = @y = @vel_x = @vel_y = @angle = 0.0
     @score = 0
+    @playerID = id
   end 
 
   def warp(x,y)
@@ -76,5 +97,9 @@ class Player
   def draw
     @image.draw_rot(@x,@y,1,@angle)
   end 
+
+  def getID
+    return @playerID
+  end
 end 
 Tutorial.new.show
