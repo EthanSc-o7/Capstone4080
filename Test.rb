@@ -60,7 +60,7 @@ require 'gosu'
 
       @player.collect_stars(@stars)
       @player2.collect_stars(@stars) 
-      if rand(100) < 4 and @stars.size < 40 
+      if rand(100) < 6 and @stars.size < 40 
         @stars.push (Star.new(@star_anim))
       end 
 
