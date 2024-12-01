@@ -31,30 +31,30 @@ require './Time.rb'
     if @timer.seconds > 0
       @timer.update
       if @player.getID == 1
-        if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
+        if Gosu.button_down? Gosu::KB_A or Gosu::button_down? Gosu::GP_LEFT
           @player.turn_left
         end
 
-        if Gosu.button_down? Gosu::KB_RIGHT or Gosu::button_down? Gosu::GP_RIGHT
+        if Gosu.button_down? Gosu::KB_D or Gosu::button_down? Gosu::GP_RIGHT
           @player.turn_right
         end
 
-        if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_BUTTON_0
+        if Gosu.button_down? Gosu::KB_W or Gosu::button_down? Gosu::GP_BUTTON_0
           @player.accelereate
         end
         @player.move
       
       end
       if @player2.getID == 2
-        if Gosu.button_down? Gosu::KB_A or Gosu::button_down? Gosu::GP_LEFT
+        if Gosu.button_down? Gosu::KB_LEFT or Gosu::button_down? Gosu::GP_LEFT
           @player2.turn_left
         end
 
-        if Gosu.button_down? Gosu::KB_D or Gosu::button_down? Gosu::GP_RIGHT
+        if Gosu.button_down? Gosu::KB_RIGHT or Gosu::button_down? Gosu::GP_RIGHT
           @player2.turn_right
         end
 
-        if Gosu.button_down? Gosu::KB_W or Gosu::button_down? Gosu::GP_BUTTON_0
+        if Gosu.button_down? Gosu::KB_UP or Gosu::button_down? Gosu::GP_BUTTON_0
           @player2.accelereate
         end
         @player2.move
